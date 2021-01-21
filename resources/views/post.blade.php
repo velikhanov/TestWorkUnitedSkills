@@ -95,7 +95,7 @@
                   @foreach($comments->comments->sortByDesc('id') as $comment)
                   <li class="clearfix">
                 @if($comment->parent_id === 0)
-                    <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar">
+                    <img src="/img/user-img.png" class="avatar">
                     <div class="post-comments mainpostcommnets">
                         <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
                         <p>
@@ -104,13 +104,12 @@
                         @if(Auth::check())
                           @if(Auth::user()->id === $comment->user_id)
                         <div class="customflex justify-content-end">
-                            <a class="addsubcomment text-primary" href="#">Add comment</a>
+                            <!-- <a class="addsubcomment text-primary" href="#">Add comment</a> -->
                             <a class="offset editcomment text-warning ml-5" href="#">Edit comment</a>
                             <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $comment->id]) }}" method="POST">
                               @method('DELETE')
                               @csrf
                                 <a class="deletecommbtn text-danger" href="#">Delete comment</a>
-                                <h1>{{ $comment->id}}</h1>
                             </form>
                         </div>
                           @endif
@@ -127,14 +126,13 @@
                     </form>
                     @endif
                         @foreach($comment->replies as $subcomment)
-                        <ul class="comments">
+                        <ul class="comments mt-3">
                             <li class="clearfix">
-                                <img src="https://bootdey.com/img/Content/user_3.jpg" class="avatar">
+                                <img src="/img/user-img.png" class="avatar">
                                 <div class="post-comments mainpostsubcommnets">
                                       <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
                                     <p>
                                         {{ $subcomment->content }}
-                                        {{ $subcomment->parent_id }}
                                     </p>
                                     @if(Auth::check())
                                       @if(Auth::user()->id === $comment->user_id)
@@ -143,7 +141,6 @@
                                         <form class="deletesubcommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">
                                           @method('DELETE')
                                           @csrf
-                                          <h1>{{$subcomment->id}}</h1>
                                             <a class="deletesubcommbtn text-danger" href="#">Delete comment</a>
                                         </form>
                                     </div>
@@ -162,9 +159,12 @@
                             </li>
                         </ul>
                       @endforeach
+                      <div class="customflex justify-content-end">
+                          <a class="addsubcomment text-primary mt-1 mb-3 mr-3" href="#">Add comment</a>
+                      </div>
                   <form method="POST" class="w-100" action="{{ route('comment.store') }}">
                     @csrf
-                    <div class="hideform replyform mb-3">
+                    <div class="hideform replyform mb-3 mt-3">
                         <input type="hidden" name="post_id" value="{{ $comment->post->id }}">
                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                         <input class="ml-auto w-50" type="text" name="content" required>

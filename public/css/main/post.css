@@ -69,7 +69,6 @@ a:hover {
 
 .blog-comment .post-comments{
 	border: 1px solid #eee;
-    margin-bottom: 20px;
     margin-left: 85px;
 	margin-right: 0px;
     padding: 10px 20px;
@@ -93,7 +92,6 @@ a:hover {
 
 .editcommnetfonts{
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 .blog-comment .meta {
