@@ -34,7 +34,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'user'], function(){
     'index', 'show'
     ]);
 
-    Route::resource('comment', CommentController::class);
+    Route::resource('comment', CommentController::class)->only([
+    'store', 'update', 'destroy'
+    ]);
 
     Route::resource('post', PostController::class)->except([
     'index', 'show'
