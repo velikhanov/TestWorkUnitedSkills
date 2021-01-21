@@ -14,7 +14,7 @@ If you are a beginner, then follow the instructions to install my project:
 
 3)Next, you can either download my project directly by clicking the green Code button, then clicking Download ZIP, or download using Git. To download via [Git](https://git-scm.com/), you must have it installed.
 
-4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains (D:\OpenServer\domains). Then go to step 10.
+4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains (D:\OpenServer\domains). Then go to step 6.
 
    ---If you are using git, then change to the same directory using the command line (cd D:\OpenServer\domains).
 
@@ -22,13 +22,15 @@ If you are a beginner, then follow the instructions to install my project:
 
 6)Next, go to the directory with the newly installed project (cd D:\OpenServer\domains\TestWorkUnitedSkills).
 
-7)Write in the console: "php artisan storage:link".
+7)Write in console "composer install".
 
-8)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the DBMS. I have used PhpMyAdmin. To enter it, select the OpenServer checkbox in the tray->Advanced->PhpMyAdmin(default username and password "root"). Select the import menu item and insert the 127_0_0_1.sql file, which is located in the project folder (database) and confirm.
+8)Then write in the console: "php artisan storage:link".
 
-9)Now you can run the project with the command in the console: "php artisan serve" and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
+9)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the DBMS. I have used PhpMyAdmin. To enter it, select the OpenServer checkbox in the tray->Advanced->PhpMyAdmin(default username and password "root"). Select the import menu item and insert the 127_0_0_1.sql file, which is located in the project folder (database) and confirm.
 
-10)I hope you will like it!
+10)Now you can run the project with the command in the console: "php artisan serve" and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
+
+I hope you will like it!
 
 ### Social Networks
 
