@@ -54,7 +54,7 @@
 
       <aside class="col-md-4 blog-sidebar">
         <div class="text-center">
-          <a type="button" href="{{ route('post.create')}}" class="btn btn-success">Cteate new post</a>
+          <a type="button" href="{{ route('post.create')}}" class="btn btn-success mb-3">Cteate new post</a>
         </div>
         <div class="p-4 mb-3 bg-light rounded">
           <h4 class="font-italic">About</h4>
