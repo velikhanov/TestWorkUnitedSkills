@@ -10,6 +10,12 @@ $(document).ready(function () {
     event.preventDefault();
   });
 });
+$(document).ready(function () {
+  $('.deletesubcommbtn').click(function (event) {
+    $('.deletesubcommform').submit();
+    event.preventDefault();
+  });
+});
 $(document).ready(function() {
   $('.addsubcomment').click(function(e) {
     e.preventDefault();

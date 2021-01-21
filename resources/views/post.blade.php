@@ -110,6 +110,7 @@
                               @method('DELETE')
                               @csrf
                                 <a class="deletecommbtn text-danger" href="#">Delete comment</a>
+                                <h1>{{ $comment->id}}</h1>
                             </form>
                         </div>
                           @endif
@@ -133,15 +134,17 @@
                                       <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
                                     <p>
                                         {{ $subcomment->content }}
+                                        {{ $subcomment->parent_id }}
                                     </p>
                                     @if(Auth::check())
                                       @if(Auth::user()->id === $comment->user_id)
                                     <div class="customflex justify-content-end">
                                         <a class="editsubcomment text-warning ml-5" href="#">Edit comment</a>
-                                        <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">
+                                        <form class="deletesubcommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">
                                           @method('DELETE')
                                           @csrf
-                                            <a class="deletecommbtn text-danger" href="#">Delete comment</a>
+                                          <h1>{{$subcomment->id}}</h1>
+                                            <a class="deletesubcommbtn text-danger" href="#">Delete comment</a>
                                         </form>
                                     </div>
                                       @endif
