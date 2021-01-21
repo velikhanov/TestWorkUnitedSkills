@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/main/post.css">
 @endsection
 
-@section('title', 'Home Page')
+@section('title', 'Posts')
 
 @section('content')
 <div class="container">

@@ -30,12 +30,12 @@ Route::get('/posts/{category}/{id}', [MainController::class, 'post'])->name('pos
 
 Route::group(['middleware' => 'auth', 'prefix' => 'user'], function(){
 
-    // Route::resource('category', CategoryController::class)->except([
-    // 'index', 'show'
-    // ]);;
-    //
-    Route::resource('comment', CommentController::class)->except([
-    'index', 'create', 'show', 'edit'
+    Route::resource('category', CategoryController::class)->except([
+    'index', 'show'
+    ]);;
+
+    Route::resource('comment', CommentController::class)->only([
+    'store', 'update', 'destroy'
     ]);;
 
     Route::resource('post', PostController::class)->except([
@@ -48,5 +48,5 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/user-panel', [AdminController::class, 'user_panel'])->name('user_panel');
 
   Route::post('/user-panel/user-edit', [AdminController::class, 'user_edit'])->name('user_edit');
-  
+
 });

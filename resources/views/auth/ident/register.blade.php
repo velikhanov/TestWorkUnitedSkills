@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title-admin', 'Регистрация')
+@section('title', 'Регистрация')
 
 @section('content')
 <section class="auth-bg">
