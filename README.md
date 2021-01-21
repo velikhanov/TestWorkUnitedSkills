@@ -24,7 +24,7 @@ If you are a beginner, then follow the instructions to install my project:
 
 7)Write in console "composer install".
 
-8)Go to the root directory and find the file .env.example. Edit it leaving only the word .env in the name (don't forget the dot). Next, open this file and set the DB_DATABASE value testworkunitedskills in the database column, and set the DB_PASSWORD value to root. At the top, in the APP_URL column, put //127.0.0.1:8000. Save.
+8)Go to the root directory and find the file .env.example. Edit it leaving only the word .env in the name (don't forget the dot). Next, open this file and set the DB_DATABASE value testworkunitedskills in the database column, and set the DB_PASSWORD value to root. At the top, in the APP_URL column, put //127.0.0.1:8000, save changes.
 
 9)Then write in the console: "php artisan storage:link".
 
