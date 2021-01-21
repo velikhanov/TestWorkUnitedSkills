@@ -22,11 +22,11 @@ If you are a beginner, then follow the instructions to install my project:
 
 6)Next, go to the directory with the newly installed project (cd D:\OpenServer\domains\TestWorkUnitedSkills).
 
-7)Write in the console: php artisan storage: link().
+7)Write in the console: "php artisan storage:link".
 
 8)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the DBMS. I have used PhpMyAdmin. To enter it, select the OpenServer checkbox in the tray->Advanced->PhpMyAdmin(default username and password "root"). Select the import menu item and insert the 127_0_0_1.sql file, which is located in the project folder (database) and confirm.
 
-9)Now you can run the project with the command in the console: php artisan serve and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
+9)Now you can run the project with the command in the console: "php artisan serve" and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
 10)I hope you will like it!
 
