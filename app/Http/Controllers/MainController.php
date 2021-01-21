@@ -27,7 +27,7 @@ class MainController extends Controller
 
       $category = Category::where('code', $category)->get();
 
-      return view('category', compact('category'));
+      return view('category_', compact('category'));
     }
 
     public function post($code, $id){

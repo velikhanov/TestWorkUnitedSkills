@@ -36,6 +36,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+            'name' => 'required|unique:categories|max:255'
+        ]);
+
         $data = $request->all();
         $data['code'] = mb_strtolower($request->name);
 
@@ -89,6 +93,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if(($category->postcats() === $category->id) !== 0){
+          return redirect()->back()->with('danger', 'This category has posts, you cannot delete it!');
+        }
         $category->delete();
         return redirect()->route('categories')->with('danger', 'Category deleted successfuly!');;
     }
