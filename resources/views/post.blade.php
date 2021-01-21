@@ -138,7 +138,7 @@
                                       @if(Auth::user()->id === $comment->user_id)
                                     <div class="customflex justify-content-end">
                                         <a class="editsubcomment text-warning ml-5" href="#">Edit comment</a>
-                                        <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $comment->id]) }}" method="POST">
+                                        <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">
                                           @method('DELETE')
                                           @csrf
                                             <a class="deletecommbtn text-danger" href="#">Delete comment</a>
