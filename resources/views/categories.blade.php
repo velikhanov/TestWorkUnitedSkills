@@ -10,6 +10,9 @@
 
 @section('content')
 <section class="container">
+    <div class="text-center">
+      <a class="btn btn-primary mt-3" href="">Create new category</a>
+    </div>
   <div class="row">
         @foreach($categories as $category)
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">

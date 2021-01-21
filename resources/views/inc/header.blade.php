@@ -27,10 +27,10 @@
             @else
             <li class="nav-item dropdown ml-5 {{ Auth::check() ? 'active' : '' }}">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                    <span><img class="usericon" src="{{ ((Auth::user()->img) && (Storage::disk('public')->exists('users/'.Auth::user()->img))) ? (Storage::url('users/'.Auth::user()->img)) : '/img/user-img.png' }}">{{ Auth::user()->name }}</span><span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right logout" aria-labelledby="navbarDropdown">
-  							  	<!-- <a class="dropdown-item" href="">Personal area</a> -->
+  							  	<a class="dropdown-item" href="{{ route('user_panel') }}">Personal area</a>
                     <a id="logout-link" class="dropdown-item" href="#">Exit</a>
                     <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf

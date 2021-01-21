@@ -7,6 +7,7 @@ use App\Http\Controllers\MainController;
 // use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\user\CommentController;
 use App\Http\Controllers\user\PostController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'user'], function(){
     'index', 'show'
     ]);
 
+});
+Route::group(['middleware' => 'auth'], function(){
+
+  Route::get('/user-panel', [AdminController::class, 'user_panel'])->name('user_panel');
+
+  Route::post('/user-panel/user-edit', [AdminController::class, 'user_edit'])->name('user_edit');
+  
 });

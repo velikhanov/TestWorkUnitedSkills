@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -122,7 +123,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
       Storage::disk('public')->exists('posts/'.$post->img)?Storage::disk('public')->delete('posts/'.$post->img):NULL;
+
       $post->delete();
+
+      if(($post->comments() === $post->id) !== 0){
+        $post->comments()->delete();
+      }
       return redirect()->route('index')->with('danger','Your post deleted successfuly!');
     }
 }
