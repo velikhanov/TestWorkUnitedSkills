@@ -36,7 +36,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['code'] = mb_strtolower($request->name);
+
+        Category::create($data);
+        return redirect()->route('categories')->with('success', 'Category created successfuly!');
     }
 
     /**
@@ -58,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('auth.user.category', compact('category'));
     }
 
     /**
@@ -70,7 +74,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $data = $request->all();
+        $data['code'] = mb_strtolower($request->name);
+
+        $category->update($data);
+        return redirect()->route('categories')->with('success', 'Category updated successfuly!');;
     }
 
     /**
@@ -81,6 +89,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories')->with('danger', 'Category deleted successfuly!');;
     }
 }

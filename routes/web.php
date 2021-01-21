@@ -24,7 +24,7 @@ Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/posts/categories', [MainController::class, 'categories'])->name('categories');
 
-Route::get('/posts/{category}', [MainController::class, 'category'])->name('category');
+Route::get('/posts/{category}', [MainController::class, 'category_'])->name('category');
 
 Route::get('/posts/{category}/{id}', [MainController::class, 'post'])->name('post');
 

@@ -10,8 +10,9 @@
 
 @section('content')
 <section class="container">
+  @include('inc.flash')
     <div class="text-center">
-      <a class="btn btn-primary mt-3" href="{{ route('category.store') }}">Create new category</a>
+      <a class="btn btn-primary mt-3" href="{{ route('category.create') }}">Create new category</a>
     </div>
   <div class="row">
         @foreach($categories as $category)
@@ -25,6 +26,14 @@
 
 						<a href="{{ route('category', $category->code)}}">Open</a>
 
+            <div class="">
+                <a class="btn btn-warning" href="{{ route('category.edit', ['category' => $category->id])}}">Edit category</a>
+                <form class="" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                   <input type="submit" class="btn btn-danger" value="Delete category">
+                </form>
+            </div>
 					 </div>
 				</div>
         @endforeach

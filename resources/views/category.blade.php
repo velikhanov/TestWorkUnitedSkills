@@ -11,7 +11,7 @@
 @section('content')
 <section class="container">
     <div class="text-center">
-      <a class="btn btn-primary mt-3" href="{{ route('category.store') }}">Create new category</a>
+      <a class="btn btn-primary mt-3" href="{{ route('category.create') }}">Create new category</a>
     </div>
     @foreach($category as $cat)
   <div class="row justify-content-center">
@@ -22,7 +22,14 @@
 						<div class="title">
 							<h4>{{ $cat->name }}</h4>
 						</div>
-
+            <div class="">
+                <a class="btn btn-warning" href="{{ route('category.edit', ['category' => $cat->id])}}">Edit category</a>
+                <form class="" action="{{ route('category.destroy', ['category' => $cat->id]) }}" method="POST">
+                  @method('DELETE')
+                  @csrf
+                   <input type="submit" class="btn btn-danger" value="Delete category">
+                </form>
+            </div>
 					 </div>
 				</div>
     </div>

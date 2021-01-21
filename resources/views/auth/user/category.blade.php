@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pagestyles')
-<link rel="stylesheet" href="/css/auth/categoryedit.css">
+<link rel="stylesheet" href="/css/auth/catedit.css">
 @endsection
 
 @section('title', 'Category')
@@ -26,9 +26,9 @@
                       <fieldset>
                           <legend class="text-center header">
                             @isset($category)
-                                  <h1>Edit post<b></h1>
+                                  <h1>Edit category<b></h1>
                               @else
-                                  <h1>Create new post</h1>
+                                  <h1>Create new category</h1>
                               @endisset
                             </legend>
                           @foreach ($errors->all() as $error)
@@ -38,10 +38,10 @@
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-pencil-alt bigicon"></i></span>
                               <div class="col-md-12">
-                                  <input name="name" type="text" placeholder="Your title" class="form-control" required @isset($category)value="{{ $category->title }}"@endisset>
+                                  <input name="name" type="text" placeholder="Your title" class="form-control" required @isset($category)value="{{ $category->name }}"@endisset>
                               </div>
                           </div>
-                          
+
 
                           <label for="img" class="btn btn-warning ml-3">Add image</label>
 
