@@ -16,7 +16,7 @@ If you are a beginner, then follow the instructions to install my project:
 
 4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains (D:\OpenServer\domains). Then go to step 10.
 
-  ---If you are using git, then change to the same directory using the command line (cd D:\OpenServer\domains).
+   ---If you are using git, then change to the same directory using the command line (cd D:\OpenServer\domains).
 
 5)Next, we need to clone the repository. To do this, open the console and write: git clone https://github.com/velikhanov/TestWorkUnitedSkills.git. Wait until everything is installed.
 
