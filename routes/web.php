@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
 
-// use App\Http\Controllers\user\CategoryController;
+use App\Http\Controllers\user\CategoryController;
 use App\Http\Controllers\user\CommentController;
 use App\Http\Controllers\user\PostController;
 use App\Http\Controllers\AdminController;
@@ -32,11 +32,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'user'], function(){
 
     Route::resource('category', CategoryController::class)->except([
     'index', 'show'
-    ]);;
+    ]);
 
-    Route::resource('comment', CommentController::class)->only([
-    'store', 'update', 'destroy'
-    ]);;
+    Route::resource('comment', CommentController::class);
 
     Route::resource('post', PostController::class)->except([
     'index', 'show'

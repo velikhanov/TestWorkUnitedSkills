@@ -6,13 +6,13 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $('.deletecommbtn').click(function (event) {
-    $('.deletecommform').submit();
+    $(this).closest('li').find('.deletecommform').submit();
     event.preventDefault();
   });
 });
 $(document).ready(function () {
   $('.deletesubcommbtn').click(function (event) {
-    $('.deletesubcommform').submit();
+    $(this).closest('li').find('.deletesubcommform').submit();
     event.preventDefault();
   });
 });

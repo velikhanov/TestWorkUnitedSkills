@@ -11,7 +11,7 @@
 @section('content')
 <section class="container">
     <div class="text-center">
-      <a class="btn btn-primary mt-3" href="">Create new category</a>
+      <a class="btn btn-primary mt-3" href="{{ route('category.store') }}">Create new category</a>
     </div>
     @foreach($category as $cat)
   <div class="row justify-content-center">

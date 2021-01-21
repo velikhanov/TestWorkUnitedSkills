@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pagestyles')
-<link rel="stylesheet" href="/css/auth/post.css">
+<link rel="stylesheet" href="/css/auth/postedit.css">
 @endsection
 
 @section('title', 'Post')
