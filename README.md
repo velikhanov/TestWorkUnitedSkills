@@ -1,62 +1,37 @@
-<p align="center"><p align="center"><a href='https://svgshare.com/s/TKW' ><img src='https://svgshare.com/i/TKW.svg' title='TEST'/></a></p></p>
+<p align="center"><p align="center"><a href='https://svgshare.com/s/TKW' ><img src='https://svgshare.com/i/TKW.svg' title='TEST' width="400" height="600"></a></p></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About This Laravel Project
 
-## About Laravel
+This is my test Laravel project for United Skills.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## How to install
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+If you are a beginner, then follow the instructions to install my project:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1)You must have a local server installed. I am using [OpenServer](https://ospanel.io/download/).
 
-## Learning Laravel
+2)You must have [Laravel](https://laravel.com/docs/8.x) installed. It is installed using [Composer](https://getcomposer.org/).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3)Next, you can either download my project directly by clicking the green Code button, then clicking Download ZIP, or download using Git. To download via [Git](https://git-scm.com/), you must have it installed.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains (D:\OpenServer\domains). Then go to step 10.
 
-## Laravel Sponsors
+  ---If you are using git, then change to the same directory using the command line (cd D:\OpenServer\domains).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+5)Next, we need to clone the repository. To do this, open the console and write: git clone https://github.com/velikhanov/TestWorkUnitedSkills.git. Wait until everything is installed.
 
-### Premium Partners
+6)Next, go to the directory with the newly installed project (cd D:\OpenServer\domains\TestWorkUnitedSkills).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+7)Write in the console: php artisan migrate. Then php artisan storage: link.
 
-## Contributing
+8)Initially, I planned to make the functionality of adding and removing categories, but did not have time. And adding a post asks you to select a category. But to solve this go to your DBMS. I have used PhpMyAdmin. To enter it, select the OpenServer checkbox in the tray->Advanced->PhpMyAdmin. Select the import menu item and insert the categories.sql file, which is located in the project folder (database).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+9)Now you can run the project with the command in the console: php artisan serve and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
-## Code of Conduct
+10)I hope you will like it!
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Social Networks
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **[VK](https://vk.com/velikhanov99)**
+- **[Facebook](https://www.facebook.com/velikhanov99)**
+- **[Instagram](https://www.instagram.com/velihanov99/)**
