@@ -10,7 +10,7 @@
         @csrf
         <input name="token" type="hidden" value="{{ $request->route('token') }}">
       	 <div class="avatar">
-      			<img src="/img/svg/laptop-house-solid.svg" alt="Avatar">
+      			<img src="/img/user-img.png" alt="Avatar">
       		</div>
             <h2 class="text-center">Reset password</h2>
 
