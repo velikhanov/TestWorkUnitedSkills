@@ -1,30 +1,45 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="{{ route('index') }}">SUPER NAME OF TEST BLOG</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div class=" ml-auto">
+          <ul class="navbar-nav">
+            <li class="nav-item ml-5 {{ Request::is('/') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ Route('index') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ml-5 {{ Request::is('categories') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('categories') }}">Categories</a>
+            </li>
+            @guest
+            @if(Route::has('register'))
+            <li class="nav-item ml-5">
+              <a class="nav-link" href="{{ route('register') }}">Register</a>
+            </li>
+            @endif
+            <li class="nav-item ml-5">
+              <a class="nav-link" href="{{ route('login') }}">Sign in</a>
+            </li>
+            @else
+            <li class="nav-item dropdown ml-5 {{ Auth::check() ? 'active' : '' }}">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right logout" aria-labelledby="navbarDropdown">
+  							  	<!-- <a class="dropdown-item" href="">Personal area</a> -->
+                    <a id="logout-link" class="dropdown-item" href="#">Exit</a>
+                    <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+  					@endguest
+          </ul>
+        </div>
       </div>
     </div>
 </nav>
