@@ -22,14 +22,10 @@ If you are a beginner, then follow the instructions to install my project:
 5)Next, we need to clone the repository. To do this, open the console and write:
 `git clone https://github.com/velikhanov/TestWorkUnitedSkills.git`. Wait until everything is installed.
 
-6)Next, go to the directory with the newly installed project:
- `php
- cd D:\OpenServer\domains\TestWorkUnitedSkills
- `
+6)Next, go to the directory with the newly installed project(GitHub can slightly change the name of the project folder. Make sure it's called: TestWorkUnitedSkills, the case is not important.):
+ `cd D:\OpenServer\domains\TestWorkUnitedSkills`
 7)Write in console:
-`php
-composer install
-`
+`composer install`
 8)Go to the root directory and find the `.env.deletethis` file. Delete dot and word `deletethis`. Only `.env` remains.
 
 9)Then write in the console:
