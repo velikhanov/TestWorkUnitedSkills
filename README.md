@@ -30,18 +30,17 @@ If you are a beginner, then follow the instructions to install my project:
 ```php
 composer install
 ```
-8)Go to the root directory and find the ```.env.deletethis``` file. Delete dot and word (deletethis). Only (.env) remains.
+8)Go to the root directory and find the ```.env.deletethis``` file. Delete dot and word ```deletethis```. Only ```.env``` remains.
 
 9)Then write in the console:
-```php
-php artisan storage:link
-```
+```php artisan storage:link```
 
-10)Then write in the console: "php artisan key:generate".
+10)Then write in the console:
+```php artisan key:generate```.
 
-11)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the DBMS. I have used PhpMyAdmin. To enter it, select the OpenServer checkbox in the tray->Advanced->PhpMyAdmin(default username and password "root"). Select the import menu item and insert the 127_0_0_1.sql file, which is located in the project folder (database) and confirm.
+11)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the ```DBMS```. I have used ```PhpMyAdmin```. To enter it, select the ```OpenServer``` checkbox in the ```tray->Advanced->PhpMyAdmin```(default username and password ```root```). Select the import menu item and insert the ```127_0_0_1.sql``` file, which is located in the project folder ```database``` and confirm.
 
-12)Now you can run the project with the command in the console: "php artisan serve" and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
+12)Now you can run the project with the command in the console: ```php artisan serve``` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
 I hope you will like it!
 
