@@ -38,7 +38,7 @@ composer install
 10)Then write in the console:
 `php artisan key:generate`.
 
-11)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the `DBMS`. I have used `PhpMyAdmin`. To enter it, select the `OpenServer` checkbox in the `tray->Advanced->PhpMyAdmin`(default username and password `root`). Select the import menu item and insert the `127_0_0_1.sql` file, which is located in the project folder `database` and confirm.
+11)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the `DBMS`. I have used `PhpMyAdmin`. To enter it, select the `OpenServer` checkbox in the `tray->OpenSever badge(flag)->Advanced->PhpMyAdmin`(default username and password `root`). Select the import menu item and insert the `127_0_0_1.sql` file, which is located in the project folder `database` and confirm.
 
 12)Now you can run the project with the command in the console: `php artisan serve` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
