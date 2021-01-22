@@ -47,11 +47,6 @@
 				</div>
         @endforeach
       </div>
-      <hr>
-      <p class="alert alert-warning text-center mt-2  mb-1">
-        <strong>Attention! You can edit and delete, only the category(-ies) you added!</strong>
-      </p>
-      <hr>
       <div class="col-md-12">
         <div class="cards">
           <!--  -->
