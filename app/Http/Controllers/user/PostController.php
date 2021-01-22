@@ -78,7 +78,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-      if(Auth::user()->id !== $post->user_id) {
+      if((Auth::user()->id !== $post->user_id)&&(Auth::user()->role !== 1)) {
          return redirect()->route('index')->with('warning', 'Insufficient authority!');
       } else {
          $categories = Category::all();
@@ -124,7 +124,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-      if(Auth::user()->id !== $post->user_id) {
+      if((Auth::user()->id !== $post->user_id)&&(Auth::user()->role !== 1)) {
          return redirect()->route('index')->with('warning', 'Insufficient authority!');
       } else {
       Storage::disk('public')->exists('posts/'.$post->img)?Storage::disk('public')->delete('posts/'.$post->img):NULL;

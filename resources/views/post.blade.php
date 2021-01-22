@@ -54,7 +54,7 @@
           <div class="customflex justify-content-center">
 
             @if(Auth::check())
-                @if(Auth::user()->id === $post->user_id)
+                @if((Auth::user()->id === $post->user_id)||(Auth::user()->role === 1))
               <a class="btn btn-warning mr-3" href="{{ route('post.edit',['post' => $post->id]) }}" type="button">Edit post</a>
               <form action="{{ route('post.destroy', ['post' => $post->id]) }}" method="POST">
                 @csrf
