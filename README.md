@@ -24,9 +24,12 @@ If you are a beginner, then follow the instructions to install my project:
 
 6)Next, go to the directory with the newly installed project(GitHub can slightly change the name of the project folder. Make sure it's called: TestWorkUnitedSkills, the case is not important.):
  `cd D:\OpenServer\domains\TestWorkUnitedSkills`
+ 
 7)Write in console:
 `composer install`
-8)Go to the root directory and find the `.env.deletethis` file. Delete dot and word `deletethis`. Only `.env` remains.
+
+8)Go to the root directory and find the `.env.deletethis` file. Delete dot and word `deletethis`. Only `.env` remains. To change the file, open it in the IDE and do it there. Windows may not allow changing the name of this file in Explorer.
+
 
 9)Then write in the console:
 `php artisan storage:link`
