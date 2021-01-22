@@ -76,8 +76,9 @@ class CategoryController extends Controller
     {
         if(Auth::user()->id !== $category->user_id){
           return redirect()->back()->with('warning', 'Insufficient authority!');
+        }else{
+          return view('auth.user.catform', compact('category'));
         }
-        return view('auth.user.catform', compact('category'));
     }
 
     /**
@@ -112,6 +113,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+      if(Auth::user()->id !== $category->user_id){
+        return redirect()->back()->with('warning', 'Insufficient authority!');
+      }else{
         Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;
 
         if(Auth::user()->id !== $category->user_id){
@@ -123,4 +127,5 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories')->with('danger', 'Category deleted successfuly!');;
     }
+  }
 }
