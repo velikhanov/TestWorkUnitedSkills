@@ -11,9 +11,10 @@
 @section('content')
 <section class="container">
   @include('inc.flash')
-    <div class="text-center">
-      <a class="btn btn-primary mt-3" href="{{ route('category.create') }}">Create new category</a>
-      <a class="btn btn-primary mt-3" href="{{ route('post.create') }}">Create new post</a>
+    <div class="d-flex justify-content-between">
+      <a class="btn btn-dark mt-3" href="{{ route('categories') }}"><i class="fas fa-backward"></i><span class="ml-1">Back to categories</span></a>
+      <a class="btn btn-success mt-3" href="{{ route('category.create') }}">Create new category</a>
+      <a class="btn btn-success mt-3" href="{{ route('post.create') }}">Create new post</a>
     </div>
   <div class="row justify-content-center">
     @foreach($category as $cat)

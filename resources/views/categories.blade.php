@@ -12,8 +12,8 @@
 <section class="container">
   @include('inc.flash')
     <div class="text-center">
-      <a class="btn btn-primary mt-3" href="{{ route('category.create') }}">Create new category</a>
-      <a class="btn btn-primary mt-3" href="{{ route('post.create') }}">Create new post</a>
+      <a class="btn btn-success mt-3 mr-2" href="{{ route('category.create') }}">Create new category</a>
+      <a class="btn btn-success mt-3 ml-2" href="{{ route('post.create') }}">Create new post</a>
     </div>
   <div class="row">
         @foreach($categories as $category)
@@ -28,7 +28,7 @@
             @if($category->postcats_count > 0)
 						<a class="btn btn-success" href="{{ route('category', $category->code)}}">Open</a>
             @else
-            <span class="btn btn-success disabled">No posts</span>
+            <span class="btn btn-secondary disabled">No posts</span>
             @endif
 
             @if(Auth::check())
