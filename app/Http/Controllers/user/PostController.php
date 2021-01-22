@@ -103,7 +103,7 @@ class PostController extends Controller
         ]);
 
       $data = $request->all();
-      $data['user_id'] = Auth::user()->id;
+      $data['user_id'] = $post->user_id;
 
       if ($request->hasFile('img')){
         Storage::disk('public')->exists('posts/'.$post->img)?Storage::disk('public')->delete('posts/'.$post->img):NULL;

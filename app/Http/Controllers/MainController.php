@@ -29,7 +29,7 @@ class MainController extends Controller
       // if($check->postcats_count < 1){
       //   return redirect()->back()->with('warning', 'No posts in this category!');
       // }else{
-        $category = Category::where('code', $category)->get();
+        $category = Category::where('code', $category)->withCount('postcats')->get();
 
         return view('category_', compact('category'));
       // }

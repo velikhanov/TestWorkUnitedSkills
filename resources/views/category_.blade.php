@@ -71,7 +71,13 @@
           </div>
           <!--  -->
         </div>
-
+        @foreach($category as $cat)
+          @if($cat->postcats_count < 1)
+          <div class="text-center">
+            <h1 class="alert alert-warning text-danger"><strong>Temporary empty!</strong></h1>
+          </div>
+          @endif
+        @endforeach
       </div><!-- /.blog-main -->
     </div>
 </section>

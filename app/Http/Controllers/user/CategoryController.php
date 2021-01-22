@@ -98,7 +98,7 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
+        $data['user_id'] = $category->user_id;
         $data['code'] = mb_strtolower($request->name);
 
         if ($request->hasFile('catimg')){
