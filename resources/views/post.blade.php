@@ -54,7 +54,7 @@
           <div class="customflex justify-content-center">
 
             @if(Auth::check())
-                @if((Auth::user()->id === $post->user_id)||(Auth::user()->role === 1))
+                @if(Auth::user()->id === $post->user_id || Auth::user()->role === 1)
               <a class="btn btn-warning mr-3" href="{{ route('post.edit',['post' => $post->id]) }}" type="button">Edit post</a>
               <form action="{{ route('post.destroy', ['post' => $post->id]) }}" method="POST">
                 @csrf
@@ -101,12 +101,12 @@
                 @if($comment->parent_id === 0)
                     <img src="{{ (($comment->user->img) && (Storage::disk('public')->exists('users/'.$comment->user->img))) ? (Storage::url('users/'.$comment->user->img)) : '/img/user-img.png' }}" class="avatar">
                     <div class="post-comments mainpostcommnets">
-                        <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
+                        <p class="meta customflex justify-content-between"><a href="#">{{ $comment->user->name }}</a><span>{{ $comment->user->created_at }}</span></p>
                         <p>
                             {{ $comment->content }}
                         </p>
                         @if(Auth::check())
-                          @if(Auth::user()->id === $comment->user_id)
+                          @if(Auth::user()->id === $comment->user_id || Auth::user()->role === 1)
                         <div class="customflex justify-content-end">
                             <!-- <a class="addsubcomment text-primary" href="#">Add comment</a> -->
                             <a class="offset editcomment text-warning ml-5" href="#">Edit comment</a>
@@ -134,12 +134,12 @@
                             <li class="clearfix">
                                 <img src="{{ (($comment->user->img) && (Storage::disk('public')->exists('users/'.$comment->user->img))) ? (Storage::url('users/'.$comment->user->img)) : '/img/user-img.png' }}" class="avatar">
                                 <div class="post-comments mainpostsubcommnets">
-                                      <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
+                                      <p class="meta customflex justify-content-between"><a href="#">{{ $subcomment->user->name }}</a><span>{{ $subcomment->user->created_at }}</span></p>
                                     <p>
                                         {{ $subcomment->content }}
                                     </p>
                                     @if(Auth::check())
-                                      @if(Auth::user()->id === $comment->user_id)
+                                      @if(Auth::user()->id === $subcomment->user_id || Auth::user()->role === 1)
                                     <div class="customflex justify-content-end">
                                         <a class="editsubcomment text-warning ml-5" href="#">Edit comment</a>
                                         <form class="deletesubcommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">

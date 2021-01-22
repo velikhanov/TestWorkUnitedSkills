@@ -78,14 +78,19 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
+      if(Auth::user()->id !== $comment->user_id && Auth::user()->role !== 1){
+        return redirect()->back()->with('warning', 'Insufficient authority!');
+      }else{
+
       $input = $request->all();
 
-      $input['user_id'] = Auth::user()->id;
+      $input['user_id'] = $comment->user_id;
 
       $comment->update($input);
 
-      return redirect()->back()->with('comment', $comment);
+      return redirect()->back();
     }
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -95,10 +100,14 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $comment->delete();
-        if(($comment->parent_id === $comment->id) !== 0){
-          $comment->replies()->delete();
+        if((Auth::user()->id !== $comment->user_id)||(Auth::user()->role !== 1)){
+          return redirect()->back()->with('warning','Insufficient authority!');
+        }else{
+          $comment->delete();
+          if(($comment->parent_id === $comment->id) !== 0){
+            $comment->replies()->delete();
+          }
+          return redirect()->back();
         }
-        return redirect()->back();
     }
 }
