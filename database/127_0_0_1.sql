@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 21 2021 г., 15:14
+-- Время создания: Янв 22 2021 г., 17:37
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.4.5
 
@@ -16,8 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
-
+--
 -- База данных: `testworkunitedskills`
 --
 CREATE DATABASE IF NOT EXISTS `testworkunitedskills` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -32,6 +31,7 @@ USE `testworkunitedskills`;
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'blog.jpg',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -42,12 +42,12 @@ CREATE TABLE `categories` (
 -- Дамп данных таблицы `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `code`, `img`, `created_at`, `updated_at`) VALUES
-(1, 'World', 'world', 'blog.jpg', NULL, NULL),
-(2, 'Technology', 'technology', 'blog.jpg', NULL, NULL),
-(3, 'Design', 'design', 'blog.jpg', NULL, NULL),
-(4, 'Science', 'science', 'blog.jpg', NULL, NULL),
-(5, 'Travel', 'travel', 'blog.jpg', NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `user_id`, `code`, `img`, `created_at`, `updated_at`) VALUES
+(3, 'Design', 3, 'design', 'blog.jpg', NULL, '2021-01-22 06:33:26'),
+(4, 'Science', 3, 'science', 'blog.jpg', NULL, '2021-01-22 05:11:17'),
+(6, 'Name', 3, 'name1', 'blog.jpg', '2021-01-21 17:27:16', '2021-01-21 17:27:16'),
+(9, 'World', 3, 'world', 'blog.jpg', '2021-01-21 18:05:54', '2021-01-21 18:05:54'),
+(10, 'Travel', 3, 'travel1', 'blog.jpg', '2021-01-21 18:12:28', '2021-01-22 05:01:03');
 
 -- --------------------------------------------------------
 
@@ -144,6 +144,7 @@ CREATE TABLE `posts` (
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` int NOT NULL DEFAULT '0',
   `img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -211,13 +212,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT для таблицы `failed_jobs`
@@ -235,13 +236,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
