@@ -41,7 +41,8 @@ If you are a beginner, then follow the instructions to install my project:
 
 12)Now you can run the project with the command in the console: `php artisan serve` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
-P.S. To edit categories, you need to have administrator rights, for this open `PhpMyAdmin` and in the `testworkunitedskill` database in the `users` table, in the `role` column, change `0` to `1` in your account column.
+P.S. To edit categories, you need to have administrator rights, for this open `PhpMyAdmin` and in the `testworkunitedskill` database in the `users` table, in the `role` column, change `0` to `1` in your account column. Also, the administrator can delete and edit all posts and comments. But the user can delete or edit only his post/comment.
+
 
 
 I hope you will like it!
