@@ -14,21 +14,32 @@ If you are a beginner, then follow the instructions to install my project:
 
 3)Next, you can either download my project directly by clicking the green Code button, then clicking Download ZIP, or download using Git. To download via [Git](https://git-scm.com/), you must have it installed.
 
-4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains (D:\OpenServer\domains). Then go to step 6.
+4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains:
+```php
+D:\OpenServer\domains
+```
+Then go to step 6.
 
-   ---If you are using git, then change to the same directory using the command line (cd D:\OpenServer\domains).
-
+   ---If you are using git, then change to the same directory using the command line:
+    ```php
+    cd D:\OpenServer\domains
+    ```
 5)Next, we need to clone the repository. To do this, open the console and write:
 ```php
 git clone https://github.com/velikhanov/TestWorkUnitedSkills.git
 ```
 Wait until everything is installed.
 
-6)Next, go to the directory with the newly installed project (cd D:\OpenServer\domains\TestWorkUnitedSkills).
-
-7)Write in console "composer install".
-
-8)Go to the root directory and find the .env.deletethis file. Delete dot and word (deletethis). Only (.env) remains.
+6)Next, go to the directory with the newly installed project:
+ ```php
+ cd D:\OpenServer\domains\TestWorkUnitedSkills
+ ```
+7)Write in console:
+```php
+composer install
+```
+8)Go to the root directory and find the ```php
+.env.deletethis``` file. Delete dot and word (deletethis). Only (.env) remains.
 
 9)Then write in the console:
 ```php
