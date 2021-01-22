@@ -33,7 +33,7 @@ composer install
 8)Go to the root directory and find the ```.env.deletethis``` file. Delete dot and word ```deletethis```. Only ```.env``` remains.
 
 9)Then write in the console:
-```php artisan storage:link```
+`php artisan storage:link`
 
 10)Then write in the console:
 ```php artisan key:generate```.
