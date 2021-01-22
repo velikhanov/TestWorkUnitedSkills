@@ -22,8 +22,4 @@ class Category extends Model
     public function postcats(){
       return $this->hasMany(Post::class);
     }
-
-    // public function getCategoryCodeAttribute(){
-    //   return $this->code
-    // }
 }

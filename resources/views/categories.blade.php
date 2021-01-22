@@ -13,6 +13,7 @@
   @include('inc.flash')
     <div class="text-center">
       <a class="btn btn-primary mt-3" href="{{ route('category.create') }}">Create new category</a>
+      <a class="btn btn-primary mt-3" href="{{ route('post.create') }}">Create new post</a>
     </div>
   <div class="row">
         @foreach($categories as $category)
@@ -21,14 +22,17 @@
 					<div class="box-part text-center bg-info rounded-lg">
 
 						<div class="title">
-              <img style="width:50px;height: 50px;border-radius:25px;" src="{{ (($category->img) && (Storage::disk('public')->exists('categories/'.$category->img))) ? (Storage::url('categories/'.$category->img)) : '/img/user-img.png' }}">
+              <img style="width:50px;height: 50px;" src="{{ (($category->img) && (Storage::disk('public')->exists('categories/'.$category->img))) ? (Storage::url('categories/'.$category->img)) : '/img/category.png' }}">
 							<h4>{{ $category->name }}</h4>
 						</div>
-
+            @if($category->postcats_count > 0)
 						<a class="btn btn-success" href="{{ route('category', $category->code)}}">Open</a>
+            @else
+            <span class="btn btn-success disabled">No posts</span>
+            @endif
 
             @if(Auth::check())
-                @if(Auth::user()->id === $category->user_id)
+                @if(Auth::user()->role === 1)
             <div class="d-flex justify-content-center pt-3">
                 <a class="btn btn-warning mr-2" href="{{ route('category.edit', ['category' => $category->id])}}">Edit category</a>
                 <form class="ml-2" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">

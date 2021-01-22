@@ -97,9 +97,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+      $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'content' => 'required',
+        ]);
+
       $data = $request->all();
       $data['user_id'] = Auth::user()->id;
-
 
       if ($request->hasFile('img')){
         Storage::disk('public')->exists('posts/'.$post->img)?Storage::disk('public')->delete('posts/'.$post->img):NULL;

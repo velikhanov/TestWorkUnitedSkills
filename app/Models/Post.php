@@ -33,10 +33,6 @@ class Post extends Model
       return $this->hasMany(Comment::class)->where('parent_id', '0');
     }
 
-    // public function replies(){
-    //   return $this->hasMany(Comment::class)->where('parent_id', '34');
-    // }
-
     public function getPartofCharAttribute(){
       return substr($this->content, 0, 30);
     }

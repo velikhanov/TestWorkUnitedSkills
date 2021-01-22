@@ -18,16 +18,21 @@ class MainController extends Controller
 
     public function categories(){
 
-      $categories = Category::all();
+      $categories = Category::withCount('postcats')->get();
 
       return view('categories', compact('categories'));
     }
 
     public function category_($category){
 
-      $category = Category::where('code', $category)->get();
+      // $check = Category::where('code', $category)->withCount('postcats')->find(1);
+      // if($check->postcats_count < 1){
+      //   return redirect()->back()->with('warning', 'No posts in this category!');
+      // }else{
+        $category = Category::where('code', $category)->get();
 
-      return view('category_', compact('category'));
+        return view('category_', compact('category'));
+      // }
     }
 
     public function post($code, $id){

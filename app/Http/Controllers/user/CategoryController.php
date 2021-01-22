@@ -74,8 +74,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        if(Auth::user()->id !== $category->user_id){
-          return redirect()->back()->with('warning', 'Insufficient authority!');
+        if(Auth::user()->role !== 1){
+          return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
         }else{
           return view('auth.user.catform', compact('category'));
         }
@@ -90,6 +90,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+      if(Auth::user()->role !== 1){
+        return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
+      }else{
+      $request->validate([
+            'name' => 'required|unique:categories|max:255'
+        ]);
+
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $data['code'] = mb_strtolower($request->name);
@@ -99,10 +106,11 @@ class CategoryController extends Controller
           unset($data['img']);
           $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('catimg')->getClientOriginalExtension();
           $request->file('catimg')->storeAs('categories', $data['img']);
-          }
-
+        }
         $category->update($data);
-        return redirect()->route('categories')->with('success', 'Category updated successfuly!');;
+
+          return redirect()->route('category', ['category' => $category->code])->with('success', 'Category updated successfuly!');
+      }
     }
 
     /**
@@ -113,19 +121,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-      if(Auth::user()->id !== $category->user_id){
-        return redirect()->back()->with('warning', 'Insufficient authority!');
-      }else{
-        Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;
-
-        if(Auth::user()->id !== $category->user_id){
-          return redirect()->back()->with('warning', 'Insufficient authority!');
-        }
-        if(($category->postcats() === $category->id) !== 0){
+      if(Auth::user()->role !== 1){
+        return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
+      }else if(($category->postcats() === $category->id) !== 0){
           return redirect()->back()->with('danger', 'This category has posts, you cannot delete it!');
-        }
+        }else{
+        Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;
         $category->delete();
         return redirect()->route('categories')->with('danger', 'Category deleted successfuly!');;
-    }
+      }
   }
 }
