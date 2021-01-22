@@ -22,9 +22,9 @@
 						<div class="title">
 							<h4>{{ $cat->name }}</h4>
 						</div>
-            <div class="">
-                <a class="btn btn-warning" href="{{ route('category.edit', ['category' => $cat->id])}}">Edit category</a>
-                <form class="" action="{{ route('category.destroy', ['category' => $cat->id]) }}" method="POST">
+            <div class="d-flex justify-content-center pt-3">
+                <a class="btn btn-warning mr-2" href="{{ route('category.edit', ['category' => $cat->id])}}">Edit category</a>
+                <form class="ml-2" action="{{ route('category.destroy', ['category' => $cat->id]) }}" method="POST">
                   @method('DELETE')
                   @csrf
                    <input type="submit" class="btn btn-danger" value="Delete category">
@@ -33,6 +33,9 @@
 					 </div>
 				</div>
     </div>
+    <p class="alert alert-warning text-center mt-2  mb-1">
+      <strong>Attention! You can edit and delete, only the category(-ies) you added!</strong>
+    </p>
     <div class="row">
       <div class="col-md-12">
         <div class="cards">

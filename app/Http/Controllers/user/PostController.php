@@ -30,7 +30,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('auth.user.post', compact('categories'));
+        return view('auth.user.postform', compact('categories'));
     }
 
     /**
@@ -49,11 +49,9 @@ class PostController extends Controller
       $data = $request->all();
       $data['user_id'] = Auth::user()->id;
 
-      if ($request->hasFile('img')){
-        // unset($post['img']);
-        $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('img')->getClientOriginalExtension();
-        // $request->file('img')->storeAs('posts', $post['img']);
-        $request->file('img')->storeAs('posts', $data['img']);
+      if ($request->hasFile('postimg')){
+        $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('postimg')->getClientOriginalExtension();
+        $request->file('postimg')->storeAs('posts', $data['img']);
         }
 
         $post = Post::create($data);
@@ -84,7 +82,7 @@ class PostController extends Controller
          return redirect()->route('index')->with('warning', 'You do not have permission to edit the post!');
       } else {
          $categories = Category::all();
-         return view('auth.user.post', compact('categories', 'post'));
+         return view('auth.user.postform', compact('categories', 'post'));
       }
         // $categories = Category::all();
         // return view('auth.user.post', compact('categories', 'post'));

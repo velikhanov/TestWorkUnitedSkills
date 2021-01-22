@@ -50,7 +50,7 @@
           <h5 class="card-title">{{ $post->title }}</h5>
           <p class="card-text text-justify">{{ $post->content }}</p>
           <hr>
-          <div class="customflex justify-content-between"><p class="blog-post-meta">{{ $post->created_at}}</p><a class="text-primary d-block" href="#">{{ $post->user->name }}<img class="d-block ml-auto mr-auto" style="width:30px;height: 30px;border-radius:25px;" src="/img/blog.jpg"></a></div>
+          <div class="customflex justify-content-between"><p class="blog-post-meta">{{ $post->created_at}}</p><a class="text-primary d-block" href="#">{{ $post->user->name }}<img class="d-block ml-auto mr-auto" style="width:30px;height: 30px;border-radius:25px;" src="{{ (($post->user->img) && (Storage::disk('public')->exists('users/'.$post->user->img))) ? (Storage::url('users/'.$post->user->img)) : '/img/user-img.png' }}"></a></div>
           <div class="customflex justify-content-center">
 
             @if(Auth::check())
@@ -66,6 +66,10 @@
           </div>
         </div>
       </div>
+      <hr class="mb-3">
+        <p class="alert alert-warning text-center mt-2  mb-1">
+          <strong>Attention! You can edit and delete, only the post(-s) you added!</strong>
+        </p>
       <hr class="mb-3">
       <!-- Add Comment Form -->
       <form action="{{ route('comment.store') }}" method="POST">
@@ -95,7 +99,7 @@
                   @foreach($comments->comments->sortByDesc('id') as $comment)
                   <li class="clearfix">
                 @if($comment->parent_id === 0)
-                    <img src="/img/user-img.png" class="avatar">
+                    <img src="{{ (($comment->user->img) && (Storage::disk('public')->exists('users/'.$comment->user->img))) ? (Storage::url('users/'.$comment->user->img)) : '/img/user-img.png' }}" class="avatar">
                     <div class="post-comments mainpostcommnets">
                         <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
                         <p>
@@ -128,7 +132,7 @@
                         @foreach($comment->replies as $subcomment)
                         <ul class="comments mt-3">
                             <li class="clearfix">
-                                <img src="/img/user-img.png" class="avatar">
+                                <img src="{{ (($comment->user->img) && (Storage::disk('public')->exists('users/'.$comment->user->img))) ? (Storage::url('users/'.$comment->user->img)) : '/img/user-img.png' }}" class="avatar">
                                 <div class="post-comments mainpostsubcommnets">
                                       <p class="meta customflex justify-content-between"><a href="#">{{ $comments->user->name }}</a><span>{{ $comments->user->created_at }}</span></p>
                                     <p>

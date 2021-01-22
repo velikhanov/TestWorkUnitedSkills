@@ -75,7 +75,7 @@
 
                           <label for="img" class="btn btn-warning ml-3">Add image</label>
 
-                          <input id="img" type="file" name="img" style="display:none;">
+                          <input id="img" type="file" name="postimg" style="display:none;">
 
                           <div class="form-group">
                               <div class="col-md-12 text-center">

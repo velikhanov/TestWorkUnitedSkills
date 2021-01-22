@@ -21,23 +21,33 @@
 					<div class="box-part text-center bg-info rounded-lg">
 
 						<div class="title">
+              <img style="width:50px;height: 50px;border-radius:25px;" src="{{ (($category->img) && (Storage::disk('public')->exists('categories/'.$category->img))) ? (Storage::url('categories/'.$category->img)) : '/img/user-img.png' }}">
 							<h4>{{ $category->name }}</h4>
 						</div>
 
-						<a href="{{ route('category', $category->code)}}">Open</a>
+						<a class="btn btn-success" href="{{ route('category', $category->code)}}">Open</a>
 
-            <div class="">
-                <a class="btn btn-warning" href="{{ route('category.edit', ['category' => $category->id])}}">Edit category</a>
-                <form class="" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">
+            @if(Auth::check())
+                @if(Auth::user()->id === $category->user_id)
+            <div class="d-flex justify-content-center pt-3">
+                <a class="btn btn-warning mr-2" href="{{ route('category.edit', ['category' => $category->id])}}">Edit category</a>
+                <form class="ml-2" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">
                   @method('DELETE')
                   @csrf
                    <input type="submit" class="btn btn-danger" value="Delete category">
                 </form>
             </div>
+              @endif
+            @endif
 					 </div>
 				</div>
         @endforeach
       </div>
+      <hr>
+      <p class="alert alert-warning text-center mt-2  mb-1">
+        <strong>Attention! You can edit and delete, only the category(-ies) you added!</strong>
+      </p>
+      <hr>
       <div class="col-md-12">
         <div class="cards">
           <!--  -->

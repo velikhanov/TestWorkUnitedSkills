@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('auth.user.category');
+        return view('auth.user.catform');
     }
 
     /**
@@ -41,7 +43,13 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
         $data['code'] = mb_strtolower($request->name);
+
+        if ($request->hasFile('catimg')){
+          $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('catimg')->getClientOriginalExtension();
+          $request->file('catimg')->storeAs('categories', $data['img']);
+          }
 
         Category::create($data);
         return redirect()->route('categories')->with('success', 'Category created successfuly!');
@@ -66,7 +74,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('auth.user.category', compact('category'));
+        if(Auth::user()->id !== $category->user_id){
+          return redirect()->back()->with('warning', 'Insufficient authority!');
+        }
+        return view('auth.user.catform', compact('category'));
     }
 
     /**
@@ -79,7 +90,15 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
         $data['code'] = mb_strtolower($request->name);
+
+        if ($request->hasFile('catimg')){
+          Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;
+          unset($data['img']);
+          $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('catimg')->getClientOriginalExtension();
+          $request->file('catimg')->storeAs('categories', $data['img']);
+          }
 
         $category->update($data);
         return redirect()->route('categories')->with('success', 'Category updated successfuly!');;
@@ -93,6 +112,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;
+
+        if(Auth::user()->id !== $category->user_id){
+          return redirect()->back()->with('warning', 'Insufficient authority!');
+        }
         if(($category->postcats() === $category->id) !== 0){
           return redirect()->back()->with('danger', 'This category has posts, you cannot delete it!');
         }
