@@ -37,6 +37,6 @@ class Post extends Model
       return substr($this->content, 0, 30);
     }
     public function getPartofCharTitleAttribute(){
-      return substr($this->content, 0, 15);
+      return substr($this->title, 0, 15);
     }
 }

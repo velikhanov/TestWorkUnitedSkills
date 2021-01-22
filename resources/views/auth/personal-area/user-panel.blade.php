@@ -114,8 +114,8 @@
                                           <tbody>
                                               <tr>
                                                 <th scope="row"><img src="/img/blog.jpg" width="100px;"></th>
-                                                <td scope="row">{{ $post->title }}</td>
-                                                <td scope="row">{{ $post->Part_of_Char}}..</td>
+                                                <td scope="row">{{ $post->Part_of_Char_Title }}</td>
+                                                <td scope="row">{{ $post->Part_of_Char }}..</td>
                                                 <td class="btn btn-info openpost"><a href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id])}}">Open</a></td>
                                               </tr>
                                             </tbody>

@@ -94,7 +94,7 @@ class CategoryController extends Controller
         return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
       }else{
       $request->validate([
-            'name' => 'required|unique:categories|max:255'
+            'name' => 'required|unique:categories,name,'.$category->id.'|max:255'
         ]);
 
         $data = $request->all();
