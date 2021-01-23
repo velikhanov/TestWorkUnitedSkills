@@ -106,11 +106,11 @@ class PostController extends Controller
       $data = $request->all();
       $data['user_id'] = $post->user_id;
 
-      if ($request->hasFile('img')){
+      if ($request->hasFile('postimg')){
         Storage::disk('public')->exists('posts/'.$post->img)?Storage::disk('public')->delete('posts/'.$post->img):NULL;
         unset($data['img']);
-        $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('img')->getClientOriginalExtension();
-        $request->file('img')->storeAs('posts', $data['img']);
+        $data['img'] = 'img_'.Auth::user()->id.time().'.'.$request->file('postimg')->getClientOriginalExtension();
+        $request->file('postimg')->storeAs('posts', $data['img']);
         }
 
         $post->update($data);
