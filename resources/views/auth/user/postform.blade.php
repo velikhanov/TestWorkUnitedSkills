@@ -43,8 +43,14 @@
                           </div>
 
                         @if($categories->isEmpty())
-                        <div class="text-danger text-center mt-2  mb-1">
-                          <h1><strong>Oops .. Looks like there are no categories.</strong></h1><a class="btn btn-success" href="{{ route('category.create') }}">Create a new one!</a>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-pencil-alt bigicon"></i></span>
+                            <div class="col-md-12 text-center">
+                              <select class="custom-select custom-select-lg mb-3">
+                                  <option>Oops .. Looks like there are no categories</option>
+                              </select>
+                              <a class="btn btn-success" href="{{ route('category.create') }}">Create a new one!</a>
+                            </div>
                         </div>
                         @else
                           <div class="form-group">
