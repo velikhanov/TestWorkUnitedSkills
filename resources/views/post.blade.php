@@ -147,7 +147,6 @@
                                           @csrf
                                             <a class="deletesubcommbtn text-danger" href="#">Delete comment</a>
                                         </form>
-                                        <h1>{{$subcomment->user_id}}</h1>
                                     </div>
                                       @endif
                                     @endif
@@ -176,8 +175,6 @@
                         <button type="submit" class="offset replysub fas fa-paper-plane ml-1"></button>
                     </div>
                   </form>
-                  <h1>{{$comment->post->id}}</h1>
-                  <h1>{{ $comment->id }}</h1>
                 </li>
                     @endforeach
                   @endforeach
