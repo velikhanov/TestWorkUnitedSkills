@@ -43,7 +43,7 @@ class PostController extends Controller
     {
       $request->validate([
             'title' => 'required|unique:posts|max:255',
-            'category' => 'required',
+            'category' => 'required|unique:categories,category'.$request->category,
             'content' => 'required',
         ]);
 
