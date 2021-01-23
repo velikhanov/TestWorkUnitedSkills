@@ -38,7 +38,7 @@
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-pencil-alt bigicon"></i></span>
                               <div class="col-md-12">
-                                  <input name="title" type="text" placeholder="Your title" class="form-control" required @isset($post)value="{{ $post->title }}"@endisset>
+                                  <input name="title" type="text" placeholder="Your title" class="form-control" required @empty($post)value="{{old('title')}}"@endempty @isset($post)value="{{ $post->title }}"@endisset>
                               </div>
                           </div>
 
@@ -81,7 +81,7 @@
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-pen-alt bigicon"></i></span>
                               <div class="col-md-12">
-                                  <textarea class="form-control" name="content" placeholder="Enter your post here." rows="7" required>@isset($post){{ $post->content }}@endisset</textarea>
+                                  <textarea class="form-control" name="content" placeholder="Enter your post here." rows="7" required>@empty($post){{ old('content') }}@endempty @isset($post){{ $post->content }}@endisset</textarea>
                               </div>
                           </div>
 

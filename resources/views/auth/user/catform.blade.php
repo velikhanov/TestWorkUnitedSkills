@@ -38,7 +38,7 @@
                           <div class="form-group">
                               <span class="col-md-1 col-md-offset-2 text-center"><i class="fas fa-pencil-alt bigicon"></i></span>
                               <div class="col-md-12">
-                                  <input name="name" type="text" placeholder="Category name" class="form-control" required @isset($category)value="{{ $category->name }}"@endisset>
+                                  <input name="name" type="text" placeholder="Category name" class="form-control" required @empty($category)value="{{ old('name') }}"@endempty @isset($category)value="{{ $category->name }}"@endisset>
                               </div>
                           </div>
 
