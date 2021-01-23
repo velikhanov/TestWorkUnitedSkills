@@ -19,6 +19,7 @@ If you are a beginner, then follow the instructions to install my project:
 
    ---If you are using git, then change to the same directory using the command line:
      `cd D:\OpenServer\domains`
+     
 5)Next, we need to clone the repository. To do this, open the console and write:
 `git clone https://github.com/velikhanov/TestWorkUnitedSkills.git` and wait until everything is installed.
 
