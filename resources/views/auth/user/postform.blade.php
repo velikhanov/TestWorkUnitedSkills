@@ -56,6 +56,8 @@
                                       @isset($post)
                                         @if($post->category_id == $category->id)
                                         selected
+                                        @else
+                                        selected
                                       @endif
                                       @endisset
                                       >{{ $category->name }}</option>
