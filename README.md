@@ -19,8 +19,9 @@ If you are a beginner, then follow the instructions to install my project:
 
    ---If you are using git, then change to the same directory using the command line:
      `cd D:\OpenServer\domains`
-     
+
 5)Next, we need to clone the repository. To do this, open the console and write:
+
 `git clone https://github.com/velikhanov/TestWorkUnitedSkills.git` and wait until everything is installed.
 
 6)Next, go to the directory with the newly installed project(GitHub can slightly change the name of the project folder. Make sure it's called: TestWorkUnitedSkills, the case is not important.):
