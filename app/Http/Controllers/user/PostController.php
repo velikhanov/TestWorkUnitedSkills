@@ -81,13 +81,12 @@ class PostController extends Controller
     {
       if(Auth::user()->id !== $post->user_id && Auth::user()->role !== 1) {
          return redirect()->route('index')->with('warning', 'Insufficient authority!');
-      } else {
+      }else{
+
       $categories = Category::all();
         return view('auth.user.postform', compact('categories', 'post'));
 
       }
-        // $categories = Category::all();
-        // return view('auth.user.post', compact('categories', 'post'));
     }
 
     /**
