@@ -15,12 +15,12 @@ If you are a beginner, then follow the instructions to install my project:
 3)Next, you can either download my project directly by clicking the green Code button, then clicking Download ZIP, or download using Git. To download via [Git](https://git-scm.com/), you must have it installed.
 
 4)---If you downloaded the file directly, unpack it in the directory of your local server. I have this folder domains:
- `D:\OpenServer\domains`. Then go to step 6.
+    `D:\OpenServer\domains`. Then go to step 6.
 
    ---If you are using git, then change to the same directory using the command line:
      `cd D:\OpenServer\domains`
 5)Next, we need to clone the repository. To do this, open the console and write:
-`git clone https://github.com/velikhanov/TestWorkUnitedSkills.git`. Wait until everything is installed.
+`git clone https://github.com/velikhanov/TestWorkUnitedSkills.git` and wait until everything is installed.
 
 6)Next, go to the directory with the newly installed project(GitHub can slightly change the name of the project folder. Make sure it's called: TestWorkUnitedSkills, the case is not important.):
  `cd D:\OpenServer\domains\TestWorkUnitedSkills`
@@ -30,16 +30,19 @@ If you are a beginner, then follow the instructions to install my project:
 
 8)Go to the root directory and find the `.env.deletethis` file. Delete dot and word `deletethis`. Only `.env` remains. To change the file, open it in the IDE and do it there. Windows may not allow changing the name of this file in Explorer.
 
-
 9)Then write in the console:
 `php artisan storage:link`
 
 10)Then write in the console:
-`php artisan key:generate`.
+`php artisan key:generate`
 
-11)I usually work with migrations, but since you said it would not be a programmer to check, I decided to simplify a little.We need to load our database into the `DBMS`. I have used `PhpMyAdmin`. To enter it, select the `OpenServer` checkbox in the `tray->OpenSever badge(flag)->Advanced->PhpMyAdmin`(default username and password `root`). Select the import menu item and insert the `127_0_0_1.sql` file, which is located in the project folder `database` and confirm.
+11)Then write in the console:
+`php artisan db:create testworkunitedskills`
 
-12)Now you can run the project with the command in the console: `php artisan serve` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
+12)Then write in the console:
+`php artisan migrate`
+
+Finally, you can run the project with the command in the console: `php artisan serve` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
 P.S. To edit categories, you need to have administrator rights, for this open `PhpMyAdmin` and in the `testworkunitedskill` database in the `users` table, in the `role` column, change `0` to `1` in your account column. Also, the administrator can delete and edit all posts and comments. But the user can delete or edit only his post/comment.
 
