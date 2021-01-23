@@ -100,7 +100,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if((Auth::user()->id !== $comment->user_id)||(Auth::user()->role !== 1)){
+        if(Auth::user()->id !== $comment->user_id && Auth::user()->role !== 1){
           return redirect()->back()->with('warning','Insufficient authority!');
         }else{
           $comment->delete();

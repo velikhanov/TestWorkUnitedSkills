@@ -132,7 +132,7 @@
                         @foreach($comment->replies as $subcomment)
                         <ul class="comments mt-3">
                             <li class="clearfix">
-                                <img src="{{ (($comment->user->img) && (Storage::disk('public')->exists('users/'.$comment->user->img))) ? (Storage::url('users/'.$comment->user->img)) : '/img/user-img.png' }}" class="avatar">
+                                <img src="{{ (($subcomment->user->img) && (Storage::disk('public')->exists('users/'.$subcomment->user->img))) ? (Storage::url('users/'.$subcomment->user->img)) : '/img/user-img.png' }}" class="avatar">
                                 <div class="post-comments mainpostsubcommnets">
                                       <p class="meta customflex justify-content-between"><a href="#">{{ $subcomment->user->name }}</a><span>{{ $subcomment->user->created_at }}</span></p>
                                     <p>
@@ -147,6 +147,7 @@
                                           @csrf
                                             <a class="deletesubcommbtn text-danger" href="#">Delete comment</a>
                                         </form>
+                                        <h1>{{$subcomment->user_id}}</h1>
                                     </div>
                                       @endif
                                     @endif
@@ -175,6 +176,8 @@
                         <button type="submit" class="offset replysub fas fa-paper-plane ml-1"></button>
                     </div>
                   </form>
+                  <h1>{{$comment->post->id}}</h1>
+                  <h1>{{ $comment->id }}</h1>
                 </li>
                     @endforeach
                   @endforeach

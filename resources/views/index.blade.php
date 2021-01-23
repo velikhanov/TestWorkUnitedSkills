@@ -64,7 +64,11 @@
         <div class="p-4">
           <h4 class="font-italic">Categories</h4>
           <ol class="mb-0">
-                  <a class="p-2 text-muted" href="#"></a>|
+            @foreach($posts as $post)
+              @foreach($post->category as $category)
+              <a class="p-2 text-muted" href="#">{{ $category}}</a>|
+              @endforeach
+            @endforeach
           </ol>
         </div>
 

@@ -90,9 +90,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-      if(Auth::user()->role !== 1){
-        return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
-      }else{
+      
       $request->validate([
             'name' => 'required|unique:categories,name,'.$category->id.'|max:255'
         ]);
@@ -110,7 +108,6 @@ class CategoryController extends Controller
         $category->update($data);
 
           return redirect()->route('category', ['category' => $category->code])->with('success', 'Category updated successfuly!');
-      }
     }
 
     /**
