@@ -25,6 +25,7 @@ If you are a beginner, then follow the instructions to install my project:
 `git clone https://github.com/velikhanov/TestWorkUnitedSkills.git` and wait until everything is installed.
 
 6)Next, go to the directory with the newly installed project(GitHub can slightly change the name of the project folder. Make sure it's called: TestWorkUnitedSkills, the case is not important.):
+
  `cd D:\OpenServer\domains\TestWorkUnitedSkills`
 
 7)Write in console:
