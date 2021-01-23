@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index(){
-      $posts = Post::all();
-      return view('index', compact('posts'));
+      $category = Category::all();
+      return view('index', compact('category'));
     }
 
     public function categories(){
@@ -25,14 +25,15 @@ class MainController extends Controller
 
     public function category_($category){
 
-      // $check = Category::where('code', $category)->withCount('postcats')->find(1);
-      // if($check->postcats_count < 1){
-      //   return redirect()->back()->with('warning', 'No posts in this category!');
-      // }else{
-        $category = Category::where('code', $category)->withCount('postcats')->get();
+      $categoryName = Category::where('code', $category)->first();
+
+      if(Category::where('code', $category)->has('postcats')->count() < 1){
+        return redirect()->back()->with('no-posts', $categoryName->name);
+      }else{
+        $category = Category::where('code', $category)->get();
 
         return view('category_', compact('category'));
-      // }
+      }
     }
 
     public function post($code, $id){

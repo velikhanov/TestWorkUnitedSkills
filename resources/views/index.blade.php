@@ -27,24 +27,26 @@
         <div class="cards">
           <!--  -->
           <div class="slider">
-          @foreach($posts as $post)
-            <div class="cards-wrapper">
-              <div class="card-grid-space">
-                <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('/img/blog.jpg')">
-                  <div class="mr-auto">
-                    <h1 class="text-center ">{{ $post->Part_of_Char_Title }}</h1>
-                    <p class="text-left ">{{ $post->Part_of_Char }}...</p>
-                    <p class="text-left ">Continue reading...</p>
-                      <!-- <div class="date"><span class="mr-5">{{ $post->user->name}}</span>{{ $post->created_at}}</div> -->
-                    <div class="tags">
-                      <div class="tag">{{ $post->category->name }}</div>
-                    </div>
-                    <div><span class="date-left">{{ $post->user->name}}</span><span class="date-right">{{ $post->created_at}}</span>
-                    </div>
+            @foreach($category as $categories)
+              @foreach($categories->postcats as $post)
+                <div class="cards-wrapper">
+                  <div class="card-grid-space">
+                    <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('/img/blog.jpg')">
+                      <div class="mr-auto">
+                        <h1 class="text-center ">{{ $post->Part_of_Char_Title }}</h1>
+                        <p class="text-left ">{{ $post->Part_of_Char }}...</p>
+                        <p class="text-left ">Continue reading...</p>
+                          <!-- <div class="date"><span class="mr-5">{{ $post->user->name}}</span>{{ $post->created_at}}</div> -->
+                        <div class="tags">
+                          <div class="tag">{{ $post->category->name }}</div>
+                        </div>
+                        <div><span class="date-left">{{ $post->user->name}}</span><span class="date-right">{{ $post->created_at}}</span>
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                </a>
-              </div>
-            </div>
+                </div>
+              @endforeach
             @endforeach
           </div>
           <!--  -->
@@ -64,10 +66,8 @@
         <div class="p-4">
           <h4 class="font-italic">Categories</h4>
           <ol class="mb-0">
-            @foreach($posts as $post)
-              @foreach($post->category as $category)
-              <a class="p-2 text-muted" href="#">{{ $category}}</a>|
-              @endforeach
+            @foreach($category as $categories)
+                  <a class="p-2 text-muted" href="{{ route('category', ['category' => $categories->code])}}">{{ $categories->name }}</a>|
             @endforeach
           </ol>
         </div>
