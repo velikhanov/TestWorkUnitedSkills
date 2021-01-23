@@ -128,9 +128,6 @@ a:hover {
   border-color: #70c5c0;
   border-radius: 2px;
 }
-.replyform input{
-  border: none;
-}
 .replysub:focus{
   outline: 0;
 }

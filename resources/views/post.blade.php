@@ -76,7 +76,7 @@
         @csrf
         <h3 class="text-success text-center">Comments</h3>
         <div class="form-group customflex justify-content-center">
-            <span class="col-md-1 col-md-offset-2"></span>
+            <!-- <span class="col-md-1 col-md-offset-2"></span> -->
             <div class="col-md-10">
                 <textarea class="form-control" name="content" placeholder="Enter your comment here" rows="5" required></textarea>
                 <div class="text-right">
