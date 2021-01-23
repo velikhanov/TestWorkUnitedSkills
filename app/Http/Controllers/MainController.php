@@ -28,7 +28,7 @@ class MainController extends Controller
       $categoryName = Category::where('code', $category)->first();
 
       if(Category::where('code', $category)->has('postcats')->count() < 1){
-        return redirect()->back()->with('no-posts', $categoryName->name);
+        return redirect()->route('categories')->with('no-posts', $categoryName->name);
       }else{
         $category = Category::where('code', $category)->get();
 
