@@ -61,8 +61,8 @@
                                     <option value="{{ $category->id }}"
                                       @isset($post)
                                         @if($post->category_id == $category->id)
-                                        selected
-                                      @endif
+                                          selected
+                                        @endif
                                       @endisset
                                       >{{ $category->name }}</option>
                                   @endforeach

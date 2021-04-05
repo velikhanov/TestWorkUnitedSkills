@@ -9,14 +9,15 @@
 @section('title', 'Categories')
 
 @section('content')
-<section class="container">
-  @include('inc.flash')
+  @if($categories->isNotEmpty())
+  <section class="container">
+    @include('inc.flash')
     <div class="text-center">
       <a class="btn btn-success mt-3 mr-2" href="{{ route('category.create') }}">Create new category</a>
       <a class="btn btn-success mt-3 ml-2" href="{{ route('post.create') }}">Create new post</a>
     </div>
-  <div class="row">
         @foreach($categories as $category)
+      <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 					<div class="box-part text-center bg-info rounded-lg">
@@ -46,7 +47,6 @@
 					 </div>
 				</div>
         @endforeach
-      </div>
       <div class="col-md-12">
         <div class="cards">
           <!--  -->
@@ -75,10 +75,17 @@
           </div>
           <!--  -->
         </div>
-
       </div><!-- /.blog-main -->
     </div>
+    </section>
+  @else
+<section class="row">
+  <div class="col-md-6 d-block m-auto text-center">
+    <h1 class="text-info">Not a single category exists!</h1>
+    <a class="btn btn-success" href="{{ route('category.create') }}">Create new category</a>
+  </div>
 </section>
+@endif
 @endsection
 @section('pagesjs')
 <script src="/js/slick.min.js"></script>

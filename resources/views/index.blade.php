@@ -12,7 +12,6 @@
 <div class="container-fluid">
   @include('inc.flash')
   <br class="mb-3">
-
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark pl-1">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">My Test Blog</h1>
@@ -23,6 +22,12 @@
 
   <main role="main" class="container-fluid">
     <div class="row">
+
+        @if($category->isEmpty())
+        <div class="col-md-8 d-block text-center m-auto">
+          <h1 class="text-info">Not a single post exists!</h1>
+          <a class="btn btn-success" href="{{ route('post.create') }}">Create new post</a>
+        @else
       <div class="col-md-8">
         <div class="cards">
           <!--  -->
@@ -31,10 +36,10 @@
               @foreach($categories->postcats as $post)
                 <div class="cards-wrapper">
                   <div class="card-grid-space">
-                    <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('/img/blog.jpg')">
+                    <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('{{ (($post->img) && (Storage::disk('public')->exists('posts/'.$post->img))) ? (Storage::url('posts/'.$post->img)) : '/img/blog.jpg' }}')">
                       <div class="mr-auto">
-                        <h1 class="text-center ">{{ $post->Part_of_Char_Title }}</h1>
-                        <p class="text-left ">{{ $post->Part_of_Char }}...</p>
+                        <h1>{{ Str::limit($post->title, 10) }}..</h1>
+                        <p class="text-left ">{{ Str::limit($post->content, 50) }}..</p>
                         <p class="text-left ">Continue reading...</p>
                           <!-- <div class="date"><span class="mr-5">{{ $post->user->name}}</span>{{ $post->created_at}}</div> -->
                         <div class="tags">
@@ -51,13 +56,15 @@
           </div>
           <!--  -->
         </div>
-
+      @endif
       </div><!-- /.blog-main -->
 
       <aside class="col-md-4 blog-sidebar">
+        @if($category->isNotEmpty())
         <div class="text-center">
           <a type="button" href="{{ route('post.create')}}" class="btn btn-success mb-3">Cteate new post</a>
         </div>
+        @endif
         <div class="p-4 mb-3 bg-light rounded">
           <h4 class="font-italic">About</h4>
           <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
@@ -66,9 +73,13 @@
         <div class="p-4">
           <h4 class="font-italic">Categories</h4>
           <ol class="mb-0">
-            @foreach($category as $categories)
+            @if($category->isEmpty())
+            <span class="p-2 text-muted">No category exist</span>
+            @else
+              @foreach($category as $categories)
                   <a class="p-2 text-muted" href="{{ route('category', ['category' => $categories->code])}}">{{ $categories->name }}</a>|
-            @endforeach
+              @endforeach
+            @endif
           </ol>
         </div>
 

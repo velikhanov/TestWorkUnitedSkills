@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index(){
-      $category = Category::all();
+      $category = Category::has('postcats')->get();
+      
       return view('index', compact('category'));
     }
 
@@ -44,6 +45,8 @@ class MainController extends Controller
 
       $specpost = Post::where('id', $id)->get();
 
-      return view('post', compact('specpost'));
+      $tenposts = Post::where('id','<>', $id)->inRandomOrder()->limit(2)->get();
+
+      return view('post', compact('specpost', 'tenposts'));
     }
 }

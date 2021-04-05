@@ -94,7 +94,7 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="blog-comment">
-                 <hr/>
+                <hr/>
                 <ul class="comments">
                 @foreach($specpost as $comments)
                   @foreach($comments->comments->sortByDesc('id') as $comment)
