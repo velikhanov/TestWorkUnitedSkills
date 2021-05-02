@@ -79,7 +79,7 @@
         <div class="form-group customflex justify-content-center">
             <!-- <span class="col-md-1 col-md-offset-2"></span> -->
             <div class="col-md-10">
-                <textarea class="form-control" name="content" placeholder="Enter your comment here" rows="5" required></textarea>
+                <textarea id="addcomm" class="form-control" name="content" placeholder="Enter your comment here" rows="5" required></textarea>
                 <div class="text-right">
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <input class="offset btn btn-success mt-1" type="submit" name="addcomment" value="Add comment">
@@ -111,7 +111,7 @@
                         <div class="customflex justify-content-end">
                             <!-- <a class="addsubcomment text-primary" href="#">Add comment</a> -->
                             <a class="offset editcomment text-warning ml-5" href="#">Edit comment</a>
-                            <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $comment->id]) }}" method="POST">
+                            <form class="deletecommform ml-5" action="{{ route('comment.destroy', ['comment' => $comment->id]) }}#addcomm" method="POST">
                               @method('DELETE')
                               @csrf
                                 <a class="deletecommbtn text-danger" href="#">Delete comment</a>
@@ -146,7 +146,7 @@
                                         <form class="deletesubcommform ml-5" action="{{ route('comment.destroy', ['comment' => $subcomment->id]) }}" method="POST">
                                           @method('DELETE')
                                           @csrf
-                                            <a class="deletesubcommbtn text-danger" href="#">Delete comment</a>
+                                            <a class="offset deletesubcommbtn text-danger" href="#">Delete comment</a>
                                         </form>
                                     </div>
                                       @endif

@@ -88,7 +88,15 @@
                           <label for="img" class="btn btn-warning ml-3">Add image</label>
 
                           <input id="img" type="file" name="postimg" style="display:none;">
-
+                          <div class="preview d-inline">
+                          @isset($post)
+                            @if($post->img && Storage::disk('public')->exists('posts/'.$post->img))
+                              <img src="{{Storage::url('posts/'.$post->img)??NULL}}" alt="Preview images">
+                            @endif
+                          @else
+                            <img style="display: none;" src="" alt="Preview images">
+                          @endisset
+                          </div>
                           <div class="form-group">
                               <div class="col-md-12 text-center">
                                   <button type="submit" class="btn btn-success btn-lg mb-5">Submit</button>

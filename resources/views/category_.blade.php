@@ -51,7 +51,7 @@
               @foreach($cat->postcats as $post)
               <div class="cards-wrapper">
                 <div class="card-grid-space">
-                  <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('/img/blog.jpg')">
+                  <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('{{Storage::disk('public')->exists('posts/'.$post->img) ? Storage::url('posts/'.$post->img) : '/img/blog.jpg'}}')">
                     <div class="mr-auto">
                       <h1 class="text-center ">{{ $post->Part_of_Char_Title }}</h1>
                       <p class="text-left ">{{ $post->Part_of_Char }}...</p>

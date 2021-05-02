@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index(){
-      $category = Category::has('postcats')->get();
-      
+      $category = Category::with(['postcats.category', 'postcats.user'])->has('postcats')->get();
+
       return view('index', compact('category'));
     }
 
     public function categories(){
 
-      $categories = Category::withCount('postcats')->get();
+      $categories = Category::with(['postcats.category', 'postcats.user'])->withCount('postcats')->get();
 
       return view('categories', compact('categories'));
     }
@@ -31,7 +31,7 @@ class MainController extends Controller
       if(Category::where('code', $category)->has('postcats')->count() < 1){
         return redirect()->route('categories')->with('no-posts', $categoryName->name);
       }else{
-        $category = Category::where('code', $category)->get();
+        $category = Category::with(['postcats.category', 'postcats.user'])->where('code', $category)->get();
 
         return view('category_', compact('category'));
       }
@@ -43,9 +43,9 @@ class MainController extends Controller
           return redirect()->back();
       }
 
-      $specpost = Post::where('id', $id)->get();
+      $specpost = Post::with(['comments.post', 'comments.user', 'comments.replies', 'comments.replies.user'])->where('id', $id)->get();
 
-      $tenposts = Post::where('id','<>', $id)->inRandomOrder()->limit(2)->get();
+      $tenposts = Post::with('category')->where('id','<>', $id)->inRandomOrder()->limit(2)->get();
 
       return view('post', compact('specpost', 'tenposts'));
     }

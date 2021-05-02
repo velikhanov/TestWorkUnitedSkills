@@ -16,8 +16,8 @@
       <a class="btn btn-success mt-3 mr-2" href="{{ route('category.create') }}">Create new category</a>
       <a class="btn btn-success mt-3 ml-2" href="{{ route('post.create') }}">Create new post</a>
     </div>
+  <div class="row">
         @foreach($categories as $category)
-      <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 					<div class="box-part text-center bg-info rounded-lg">
@@ -55,7 +55,7 @@
             @foreach($category->postcats as $post)
             <div class="cards-wrapper">
               <div class="card-grid-space">
-                <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('/img/blog.jpg')">
+                <a class="card" href="{{ route('post', ['category' => $post->category->code, 'id' => $post->id ])}}" style="--bg-img: url('{{Storage::disk('public')->exists('posts/'.$post->img) ? Storage::url('posts/'.$post->img) : '/img/blog.jpg'}}')">
                   <div class="mr-auto">
                     <h1 class="text-center ">{{ $post->Part_of_Char_Title }}</h1>
                     <p class="text-left ">{{ $post->Part_of_Char }}...</p>

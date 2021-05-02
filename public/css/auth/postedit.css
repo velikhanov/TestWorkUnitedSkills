@@ -12,7 +12,11 @@
     font-size: 27px;
     padding: 10px;
 }
-
+.preview img{
+  width: auto;
+  height: 75px;
+  /* transition: .5s; */
+}
 .bigicon {
     font-size: 35px;
     color: #36A0FF;
