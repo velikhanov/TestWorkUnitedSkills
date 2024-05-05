@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        if(Auth::user()->role !== 1){
+        if(Auth::user()->role != 1){
           return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
         }else{
           return view('auth.user.catform', compact('category'));
@@ -118,9 +118,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-      if(Auth::user()->role !== 1){
+      if(Auth::user()->role != 1){
         return redirect()->back()->with('danger', 'Insufficient authority! Contact the administrator!');
-      }else if(($category->postcats() === $category->id) !== 0){
+      }else if(($category->postcats() == $category->id) != 0){
           return redirect()->back()->with('danger', 'This category has posts, you cannot delete it!');
         }else{
         Storage::disk('public')->exists('categories/'.$category->img)?Storage::disk('public')->delete('categories/'.$category->img):NULL;

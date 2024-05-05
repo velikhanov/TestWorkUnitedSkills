@@ -27,7 +27,7 @@
 							<h4>{{ $cat->name }}</h4>
 						</div>
             @if(Auth::check())
-                @if(Auth::user()->role === 1)
+                @if(Auth::user()->role == 1)
             <div class="d-flex justify-content-center pt-3">
                 <a class="btn btn-warning mr-2" href="{{ route('category.edit', ['category' => $cat->id])}}">Edit category</a>
                 <form class="ml-2" action="{{ route('category.destroy', ['category' => $cat->id]) }}" method="POST">

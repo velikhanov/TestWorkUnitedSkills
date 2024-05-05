@@ -53,6 +53,7 @@ $(document).ready(function() {
     $(this).closest('li').find('.mainpostsubcommnets').hide();
     $(this).closest('li').find('.editsubcommentblock').removeClass('hideclass');
     // $(this).hide();//if you need to hide button  which is clicked
+    $(this).closest('li').find('.fas.fa-times').show();
   });
   $('.fas.fa-times').click(function(e) {
     e.preventDefault();
@@ -61,18 +62,6 @@ $(document).ready(function() {
     $(this).closest('li').find('.editsubcommentblock').addClass('hideclass');
     // $(this).hide();//if you need to hide button  which is clicked
   });
-});
-$(document).ready(function(){
-  $('.fas.fa-edit').click(function(e){
-    e.preventDefault();
-  $('.useredit, .fas.fa-times').show();
-  $('.fas.fa-edit, .userdata').hide();
-});
-  $('.fas.fa-times').click(function(e){
-    e.preventDefault();
-  $('.useredit, .fas.fa-times').hide();
-  $('.fas.fa-edit, .userdata').show();
-});
 });
 $(document).ready(function () {
   $('#navbarDropdown').click(function () {

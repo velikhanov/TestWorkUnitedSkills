@@ -33,7 +33,7 @@
             @endif
 
             @if(Auth::check())
-                @if(Auth::user()->role === 1)
+                @if(Auth::user()->role == 1)
             <div class="d-flex justify-content-center pt-3">
                 <a class="btn btn-warning mr-2" href="{{ route('category.edit', ['category' => $category->id])}}">Edit category</a>
                 <form class="ml-2" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">

@@ -78,7 +78,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-      if(Auth::user()->id !== $comment->user_id && Auth::user()->role !== 1){
+      if(Auth::user()->id != $comment->user_id && Auth::user()->role != 1){
         return redirect()->back()->with('warning', 'Insufficient authority!');
       }else{
 
@@ -100,11 +100,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if(Auth::user()->id !== $comment->user_id && Auth::user()->role !== 1){
+        if(Auth::user()->id != $comment->user_id && Auth::user()->role != 1){
           return redirect()->back()->with('warning','Insufficient authority!');
         }else{
           $comment->delete();
-          if(($comment->parent_id === $comment->id) !== 0){
+          if(($comment->parent_id == $comment->id) != 0){
             $comment->replies()->delete();
           }
           return redirect()->back();

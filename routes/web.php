@@ -19,7 +19,12 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('/link', function () {        
+//   $target = 'blog_app/storage/app/public';
+//   $shortcut = 'storage';
+//   dd(symlink($target, $shortcut));
+//   dd('done');
+// });
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/posts/categories', [MainController::class, 'categories'])->name('categories');
